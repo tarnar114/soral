@@ -1,8 +1,7 @@
 #include "ui.h"
 #include <notcurses/notcurses.h>
-#include <stdio.h>
-int main() {
-  // notcurses drawing
+int main(void) {
   init();
-  return 0;
+  run();
+  quit();
 }

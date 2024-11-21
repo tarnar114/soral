@@ -4,6 +4,8 @@ deps=[
   dependency('notcurses')
 ]
 include=include_directories('include')
+ui_sources = run_command('find', 'src/ui', '-name', '*.c', check: true).stdout().strip().split('\n')
+# Alternatively, to include ALL .c files in the ui folder:
 executable('ytEmbeds','src/main.c',
-'src/ui/ui.c','src/ui/screen.c',  dependencies:deps,
+ui_sources,  dependencies:deps,
   include_directories:include)

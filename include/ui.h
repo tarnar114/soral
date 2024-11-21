@@ -13,7 +13,6 @@ void init(void);
 void run(void);
 void quit(void);
 void init_canvas(struct notcurses *nc);
-static void process_input(const ncinput *input);
 struct ncplane *get_canvas_plane(void);
 void init_panel(struct notcurses *nc);
-
+void draw_box(struct ncplane *plane,int rows,int cols,unsigned int mask);

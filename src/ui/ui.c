@@ -11,7 +11,6 @@ void init() {
     printf("Could not initialize notcurses.\n");
   }
   init_canvas(nc);
-  init_panel(nc);
   notcurses_render(nc);
   running = true;
 }
@@ -20,13 +19,14 @@ void run() {
   memset(&input, 0, sizeof(struct ncinput));
   while (running) {
     notcurses_get_blocking(nc, &input);
+    if (input.id == 'q') {
+      running = false;
+    }
+    notcurses_render(nc);
   }
 }
-static void process_input(const ncinput *input) {
-  switch (input->id) {
-  case 'q':
-    running = false;
-    break;
+void quit() {
+  if (running == false) {
+    notcurses_stop(nc);
   }
 }
-void quit() { printf("quit"); }
